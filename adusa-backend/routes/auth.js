@@ -72,7 +72,7 @@ router.put("/users/:id",async(req,res)=>{
 router.delete("/users/:id",async(req,res)=>{
     try{
         const id = req.params.id;
-        const user= await User.findById(id);
+        const user= await User.findById(id);//In findById no need to send as object. 
         if(!user)
             return res.status(404).json({message:"User not found"});
         const userDelete= await User.findByIdAndDelete(id);
