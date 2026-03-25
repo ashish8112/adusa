@@ -9,3 +9,4 @@ function StudentCard({name,college,branch})
     );
 }
 
+export default StudentCard;
