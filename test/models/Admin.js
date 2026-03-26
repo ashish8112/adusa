@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const adminSchema = new mongoose.Schema({
     name:{type: String,required : true},
     email:{type:String,required:true},
-    password:{type:String ,required:true}   //Ashish@2002
+    password:{type:String ,required:true}   //Ashish@d.b.o
 })
 
 const Admin = mongoose.model("Admin",adminSchema);
