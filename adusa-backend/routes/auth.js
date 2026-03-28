@@ -26,7 +26,7 @@ router.post("/register",async (req,res)=>{
 
 router.get("/users",async(req,res)=>{
     try{
-         const users = await User.find({});
+         const users = await User.find({});//returns Array of Object becuase every documnet in object so Array of Ojbect
         res.json({users});
     }
     catch(err)
