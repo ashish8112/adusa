@@ -65,7 +65,7 @@ router.get("/admin/login",async(req,res)=>{
 })
 
 
-router.get("/users",verifyToken,async(req,res)=>{
+router.get("/users",verifyToken,async(req,res)=>{ // only can be accessed by admin
     try{
     const users = await User.find({});
     res.status(200).json({message:"Welcome Mr "+req.user.name,users})
