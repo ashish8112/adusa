@@ -1,7 +1,7 @@
 function StudentCard({name,college,branch,bio="No bio Yet"})
 {
     return (
-        <div>
+        <div className="info">
             <h2>{name}</h2>
             <p>College: {college}</p>
             <p>Branch : {branch}</p>

@@ -1,8 +1,8 @@
-import StudentCard from './StudentCard'
+import StudentCard from './component/StudentCard'
 function App()
 {
   return (
-    <div>
+    <div className='container'>
       <h1>Welcome to Adusa</h1>
       <StudentCard name="Ashu" college="Kristu Jayanti" branch="MCA" />
       <br></br>
