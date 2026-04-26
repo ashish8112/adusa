@@ -2,7 +2,7 @@
 
 > LinkedIn for college students — focused, familiar, and built for campus life.
 
-## 🚀 Live Demo
+##  Live Demo
 Coming soon — deployment in progress.
 
 ## 💡 About
