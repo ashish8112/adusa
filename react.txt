@@ -103,3 +103,22 @@ Add "type": "module" inside your backend's package.json file.
     "express": "^4.19.2"
   }
 }
+
+            ECMAScript Modules (ESM) are often referred to as "ES6 modules" because they were officially introduced to the JavaScript language in ECMAScript 2015, which was the 6th major edition of the JavaScript specification (commonly abbreviated as ES6).
+            Here is the quick breakdown of why these terms are used interchangeably:
+
+            The Timeline ExplainedES1 to ES5 (1997–2009): 
+            JavaScript had no native, built-in system to link one code file to another. Developers had to use script tags in HTML or third-party systems like CommonJS.
+
+            ES6 / ECMAScript 2015: The JavaScript standards committee released a massive update to modernise the language. This 6th edition introduced import and export as the standard, official way to handle modules natively.
+
+ES6 introduced 
+1.let and const (new variable).
+2.Arrow function 
+3.Template literals (` hello $name `)
+4. Destructing Assignment (const {name,age}=user)
+5.standard import and export mechanism (ESM) ECMAScript modules
+6. New Data Structure and loops -> Map, Set , for...of
+
+Es8
+1.async and await 
