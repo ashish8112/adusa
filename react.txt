@@ -1,0 +1,10 @@
+npm create vite// is bundler then choose react -> javascript 
+
+ 
+* There is a div with id root in index.html
+we create root Dom with that root div which acts as the empty shell where our entire  react app will be 
+
+import {createRoot} from 'react-dom/client';
+
+creatRoot(document.getElementById('Root')).render(<App /> or App())
+
