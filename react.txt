@@ -12,6 +12,7 @@ creatRoot(document.getElementById('Root')).render(<App /> or App())
 
 The Root Component (typically named <App />) is the very first component in your React tree. It serves as the parent to every other component in your application.
 
+
     //Import and Export
             1. Default export
 Use this when a file exports one main thing. You can name the import anything you want.
@@ -74,3 +75,31 @@ function App() {
 }
 
 
+                    **Difference between backend and  Frontend Import/Export 
+
+The difference comes down to two different module systems created at different times in JavaScript's history.
+->The Backend Version (require / module.exports) is called CommonJS (CJS).
+->The Frontend Version (import / export) is called ECMAScript Modules (ESM). 
+
+** Why Frontend Uses import and exportIn 2015, the official JavaScript standard committee released a new version of JavaScript (ES6) and introduced a native way to handle modules, called ECMAScript Modules (ESM).Because it is the official standard, modern frontend frameworks (like React, Vite, and Next.js) adopted it completely.
+
+
+** Can you use import/export in the backend now?
+Yes. Modern versions of Node.js fully support the import/export (ESM) syntax. 
+You can use it in your backend by doing one of two things:
+Change your file extension from .js to .mjs.
+Add "type": "module" inside your backend's package.json file.
+
+{
+  "name": "my-backend-app",
+  "version": "1.0.0",
+  "description": "Node backend using ES Modules",
+  "main": "server.js",
+  "type": "module", // add this 
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
