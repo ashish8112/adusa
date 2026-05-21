@@ -8,3 +8,69 @@ import {createRoot} from 'react-dom/client';
 
 creatRoot(document.getElementById('Root')).render(<App /> or App())
 
+        // Root Component
+
+The Root Component (typically named <App />) is the very first component in your React tree. It serves as the parent to every other component in your application.
+
+    //Import and Export
+            1. Default export
+Use this when a file exports one main thing. You can name the import anything you want.
+
+export default function Button() {
+  return <button>Click me</button>;
+}
+
+or 
+ function Button() {
+  return <button>Click me</button>;
+}
+
+export default Button;
+
+        * TO import default export
+
+import CustomButton from './Button';  or import Button from './Button';
+
+function App() {
+  return <CustomButton />;
+}
+
+            2. Named export
+Use this when a file exports multiple things. You must use curly braces {} and match the exact export names.
+
+export function HomeIcon() { return <span>🏠</span>; }
+export function UserIcon() { return <span>👤</span>; }
+
+        * TO import named export
+
+import { HomeIcon, UserIcon } from './Icons';   // must use curly braces and match the exact export identifiers(names)
+
+function App() {
+  return <div><HomeIcon /><UserIcon /></div>;
+}
+
+        3. Combined Export (Default+Named)
+
+// Default export
+export default function Alert({ children }) {
+  return <div className="alert">{children}</div>;
+}
+
+// Named exports
+export const SEVERITY_HIGH = 'high';
+export const SEVERITY_LOW = 'low';
+
+
+        * TO import Combined export (Default+Named)
+
+import Alert, { SEVERITY_HIGH, SEVERITY_LOW } from './Alert';
+
+function App() {
+  return (
+    <Alert severity={SEVERITY_HIGH}>
+      Critical system error!
+    </Alert>
+  );
+}
+
+
