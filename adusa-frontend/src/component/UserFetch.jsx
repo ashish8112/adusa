@@ -6,13 +6,15 @@ export default function UserFetch()
   useEffect(()=>{
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(res=>res.json())
-    .then(data=>setUsers(data))
+    .then(data=>{
+      console.log(data)
+      setUsers(data)})
   },[])
   return(
     <div>
-      {users.map((user)=>{
-        (<p key={user.id}>{user.name}</p>)
-      })}
+      {users.map((user)=>
+         (<p key={user.id}>{user.name}</p>)
+      )}
     </div>
   )
 }
