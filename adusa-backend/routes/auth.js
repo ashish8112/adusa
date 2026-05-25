@@ -26,7 +26,8 @@ router.post("/register",async (req,res)=>{
 
 router.get("/users",async(req,res)=>{
     try{
-         const users = await User.find({});//returns Array of Object becuase every documnet in object so Array of Ojbect
+         //const users = await User.find({});//returns Array of Object becuase every documnet in object so Array of Ojbect
+         const users = await User.find({}).select("-password") // it will exclude the password 
         res.json({users});
     }
     catch(err)
