@@ -12,7 +12,7 @@ function App()
   //   </div>
   // )
   return(
-    <UserFetch />
+    <UserFetch /> //To fetch users using fetch component
   )
 }
 
