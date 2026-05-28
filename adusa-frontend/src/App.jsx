@@ -1,4 +1,5 @@
 import StudentCard from './component/StudentCard'
+import MyForm from './component/useRef';
 import UserFetch from './component/UserFetch';
 function App()
 {
@@ -12,7 +13,10 @@ function App()
   //   </div>
   // )
   return(
+    <div className='parent'>
     <UserFetch /> //To fetch users using fetch component
+    <MyForm/>
+    </div>
   )
 }
 
