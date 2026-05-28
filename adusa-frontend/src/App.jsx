@@ -1,7 +1,10 @@
 import StudentCard from './component/StudentCard'
-import TimeCount from './Practice/TimeCountuseRef';
-import MyForm from './Practice/useRef';
+import TimeCount from './practice/TimeCountuseRef';
+import MyForm from './practice/useRef';
 import UserFetch from './component/UserFetch';
+import { UserContext } from './practice/UseContext';
+import ProfileCard from './practice/ProfileCard';
+import FetchUser from './component/FetchComponent';
 function App()
 {
   // return (
@@ -13,11 +16,16 @@ function App()
   //     <h2>To Run on mobile use npm run dev -- --host. It will expose to ip not only on localhost</h2>
   //   </div>
   // )
+  const user = {name:"Ashu",college:"Kristu Jayanti",branch:"MCA"}
   return(
     <div className='parent'>
-    <UserFetch /> //To fetch users using fetch component
+    <UserFetch />  {/* To fetch users using fetch component */}
     <MyForm/>
     <TimeCount/>
+    <UserContext.Provider value={user}>{/*Wrapping UserContext global variable*/} 
+      <ProfileCard/>
+    </UserContext.Provider>
+    <FetchUser/>  {/*Fetching User using custom hooks*/}
     </div>
   )
 }
