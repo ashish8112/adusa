@@ -1,5 +1,6 @@
 import StudentCard from './component/StudentCard'
-import MyForm from './component/useRef';
+import TimeCount from './Practice/TimeCountuseRef';
+import MyForm from './Practice/useRef';
 import UserFetch from './component/UserFetch';
 function App()
 {
@@ -16,6 +17,7 @@ function App()
     <div className='parent'>
     <UserFetch /> //To fetch users using fetch component
     <MyForm/>
+    <TimeCount/>
     </div>
   )
 }
