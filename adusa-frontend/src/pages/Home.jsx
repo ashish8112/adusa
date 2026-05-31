@@ -1,31 +1,15 @@
-import StudentCard from "../component/StudentCard"
-import TimeCount from '../practice/TimeCountuseRef';
-import MyForm from '../practice/useRef';
-import UserFetch from '../component/UserFetch';
-import { UserContext } from '../practice/UseContext';
-import ProfileCard from '../practice/ProfileCard';
-import FetchUser from '../component/FetchComponent';
+import { Link,useNavigate } from "react-router-dom";
 function Home(){
- // return (
-  //   <div className='container'>
-  //     <h1>Welcome to Adusa</h1>
-  //     <StudentCard name="Ashu" college="Kristu Jayanti" branch="MCA" />
-  //     <br></br>
-  //     <StudentCard name="Amrita" college="IIM" branch="MBA" bio="Radhey Radhey" />
-  //     <h2>To Run on mobile use npm run dev -- --host. It will expose to ip not only on localhost</h2>
-  //   </div>
-  // )
-  const user = {name:"Ashu",college:"Kristu Jayanti",branch:"MCA"}
+  const navigate= useNavigate();
+
   return(
     <div className='parent'>
-    <UserFetch />  {/* To fetch users using fetch component */}
-    <MyForm/>
-    <TimeCount/>
-    <UserContext.Provider value={user}>{/*Wrapping UserContext global variable*/} 
-      <ProfileCard/>
-    </UserContext.Provider>
-    <FetchUser/>  {/*Fetching User using custom hooks*/}
+    <h1>Home Page</h1>
+    <Link to ="/login">Go to Login</Link> {/*It is creating clickable link which is appending this string in our url */}
+    <br></br>
+    <button onClick={()=>navigate("/profile")}>Go to Profile</button> {/*Same as above but in button */}
     </div>
   )
+  
 }
 export default Home;
