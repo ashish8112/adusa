@@ -5,8 +5,7 @@ export default function Profile()
     return (
         <div>
             <h1>Profile Page</h1>
-            <button onClick={()=>navigate("/")}>Logout</button>
-        </div>
-        
+            <button onClick={()=>{navigate("/")}}>Logout</button>
+        </div>     
     )
 }
