@@ -1,4 +1,5 @@
 import ProtectedRoute from "./component/ProtectedRoute"
+import NotFound from "./pages/NotFound"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
@@ -9,11 +10,12 @@ function App()
  <Routes>
   <Route path="/" element={<Home/>} />
   <Route path="/login" element={<Login/>} />
-  <Route path="/profile" element={
+  <Route path="/profile/:userId" element={  /*userId act as placeholder anything after profile/:123 will be stored in useParams */
   <ProtectedRoute>
     <Profile/>
   </ProtectedRoute> 
   } />
+  <Route path="*" element={<NotFound/>}/>
  </Routes>
   )
 }
