@@ -4,7 +4,7 @@ function ProtectedRoute({children})
     const token = localStorage.getItem("token")
 
     if(!token)
-        return <Navigate to = "/login" /> 
+        return <Navigate to = "/login" /> // ye line react dekhtey hi turant render karta hain not like useNavigate hook jo eventHandler pe kaam karein 
     
     return children;
 
