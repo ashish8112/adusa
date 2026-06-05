@@ -7,7 +7,7 @@ function Home(){
     <h1>Home Page</h1>
     <Link to ="/login">Go to Login</Link> {/*It is creating clickable link which is appending this string in our url */}
     <br></br>
-    <button onClick={()=>navigate("/profile")}>Go to Profile</button> {/*Same as above but in button */}
+    <button onClick={()=>navigate("/profile/123")}>Go to Profile</button> {/*Same as above but in button */} 
     </div>
   )
   
