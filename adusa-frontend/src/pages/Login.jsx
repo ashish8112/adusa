@@ -1,12 +1,35 @@
-import { useNavigate } from "react-router-dom"
+import {useState} from "react"
 export default function Login()
 {
-    const navigate = useNavigate();
+    const[email,setEmail]=useState("");
+    const[password,setPassword]=useState("");
+    function handleSubmit(e){
+        e.preventDefault(); {/* Stop Reloading of file*/}
+        console.log({email,password})
+    }
     return(
-        <div>
-            <h1>Welcome to Login Page</h1>
-            <button onClick={()=>navigate("/")}>Logout</button>
-        </div>
-        
+        <form onSubmit={handleSubmit}>
+            <label htmlFor="user-email">Enter the Email</label> {/*not for because reserverd keyword of js for loop */}
+            <br/>
+            <input
+                type="text"
+                placeholder="Email"
+                id="user-email"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+            />
+            <br/>
+            <label htmlFor="user-password">Enter </label>
+            <br/>
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                id="user-password"
+            />
+            <br/>
+            <button type="submit">submit</button>
+        </form>
     )
 }
