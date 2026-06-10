@@ -1,4 +1,5 @@
 import { Link,useNavigate } from "react-router-dom";
+import FetchVsAxios from "../Practice/FetchVsAxios";
 function Home(){
   const navigate= useNavigate();
 
@@ -8,6 +9,7 @@ function Home(){
     <Link to ="/login">Go to Login</Link> {/*It is creating clickable link which is appending this string in our url */}
     <br></br>
     <button onClick={()=>navigate("/profile/123")}>Go to Profile</button> {/*Same as above but in button */} 
+    <FetchVsAxios/>
     </div>
   )
   
