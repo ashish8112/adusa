@@ -1,6 +1,8 @@
 import {useState} from "react"
+import { useNavigate, Navigate} from "react-router-dom";
 export default function Login()
 {
+    const navigate = useNavigate();
     const[formData,setFormData]=useState({
         email:"",
         password:""
@@ -12,7 +14,9 @@ export default function Login()
         alert("Please fill all field")
         return 
     }
-        console.log(formData)
+        console.log(formData);
+        // return <Navigate to="/profile"/>  it will not run as it is event handler function not returning anything from component so we useNavigate
+        navigate("/profile/345");
     }
     function handleChange(e){
         setFormData({...formData,[e.target.name]:e.target.value }) // why square bracket see in day 6 react note
