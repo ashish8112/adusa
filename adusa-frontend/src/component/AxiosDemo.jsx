@@ -14,7 +14,21 @@ useEffect(()=>{     // we must not write async directly to callback function bec
     }
         fetchUser("https://jsonplaceholder.typicode.com/users/2");
 },[])
+        async function createPost(url,data){
+            try{
+                const res = await axios.post(url,data)
+                console.log(res.data)
+            }
+            catch (err){
+                console.error(err.message)
+            }
+        }
     if(!user)
         return <p>Loading....</p>
-    return <h2>{user.name}- {user.email}</h2>
+    return (
+        <div>
+    <h2>{user.name}- {user.email}</h2>
+    <button onClick={()=>createPost("https://jsonplaceholder.typicode.com/posts",{ title: "Adusa", body: "College network", userId: 1 })}>Create Post</button>
+    </div>
+    )
 }
