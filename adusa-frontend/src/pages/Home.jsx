@@ -1,6 +1,6 @@
 import { Link,useNavigate } from "react-router-dom";
-import FetchVsAxios from "../Practice/OldFetchVsAxios";
 import AxiosDemo from "../component/AxiosDemo";
+
 function Home(){
   const navigate= useNavigate();
 
