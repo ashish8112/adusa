@@ -1,5 +1,6 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
+import CreatePost from "./CreatePost";
 export default function AxiosDemo(){
 const [user,setUser] =  useState(null);
 useEffect(()=>{     // we must not write async directly to callback function because useEffect need cleanup function not promise and as we know async return promise ex promise{<pending>}
@@ -12,23 +13,16 @@ useEffect(()=>{     // we must not write async directly to callback function bec
             console.error(err.message);
         }
     }
-        fetchUser("https://jsonplaceholder.typicode.com/users/2");
+        fetchUser("http://localhost:3000/api/auth/users");
 },[])
-        async function createPost(url,data){
-            try{
-                const res = await axios.post(url,data)
-                console.log(res.data)
-            }
-            catch (err){
-                console.error(err.message)
-            }
-        }
     if(!user)
         return <p>Loading....</p>
     return (
         <div>
-    <h2>{user.name}- {user.email}</h2>
-    <button onClick={()=>createPost("https://jsonplaceholder.typicode.com/posts",{ title: "Adusa", body: "College network", userId: 1 })}>Create Post</button>
+    <ul>{user.map((us)=>(
+        <li key={us._id}>{us.name}-{us.email}</li>
+    ))}</ul>
+    <CreatePost/>
     </div>
     )
 }
