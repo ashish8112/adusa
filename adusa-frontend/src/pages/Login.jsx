@@ -1,5 +1,7 @@
 import {useState} from "react"
 import { useNavigate, Navigate} from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
+import axios from "axios";
 export default function Login()
 {
     const navigate = useNavigate();
@@ -7,16 +9,26 @@ export default function Login()
         email:"",
         password:""
     });
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault(); {/* Stop Reloading of file*/}
     if(!formData.email||!formData.password)
     {
         alert("Please fill all field")
         return 
     }
-        console.log(formData);
         // return <Navigate to="/profile"/>  it will not run as it is event handler function not returning anything from component so we useNavigate
-        navigate("/profile/345");
+        try{
+            const res = await axios.post("http://localhost:3000/api/auth/users/login",formData);
+            console.log(res.data.token);
+            localStorage.setItem("token",res.data.token);
+            const decode = jwtDecode(res.data.token);
+            //navigate("/profile/deocde.id"); // it will not work because it will store as string literal
+            navigate(`/profile/${decode.id}`)
+        }
+        catch(err){
+             console.error(err.response?.status+" "+err.response?.data?.message || err.message)
+        }
+        
     }
     function handleChange(e){
         setFormData({...formData,[e.target.name]:e.target.value }) // why square bracket see in day 6 react note
