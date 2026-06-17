@@ -5,7 +5,7 @@ export default function NotFound(){
         <div>
             <h1>404 - Page Not Found </h1>
             <Link to="/">Go to Home</Link>
-            {/* <Navigate to ="/login"/> */} if this is in code it will always automatically redirect to login page without showing above info.
+            {/* <Navigate to ="/login"/> */} {/*if this is in code it will always automatically redirect to login page without showing above info.*/}
         </div>
     )
 }
