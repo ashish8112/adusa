@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 async function verifyToken(req,res,next){
     try{
-    const authHeader = req.headers['Authorization'];
+    const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(" ")[1];//&& because first it check truthy values (it shouldn't null , undefined,"",0 or false)
     if(!token)
         return res.status(401).json({message:"Token is missing -  please login "});
