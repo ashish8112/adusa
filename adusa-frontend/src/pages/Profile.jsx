@@ -33,7 +33,7 @@ export default function Profile()
         <div>
             <h1>{profile.name}</h1>
             <p>{profile.email}</p>
-            <button onClick={()=>{navigate("/")}}>Logout</button>
+            <button onClick={()=>{localStorage.removeItem("token");navigate("/")}}>Logout</button>
         </div>     
     )
 }
