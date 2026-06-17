@@ -10,7 +10,7 @@ export default function Login()
         password:""
     });
     async function handleSubmit(e){
-        e.preventDefault(); {/* Stop Reloading of file*/}
+        e.preventDefault(); // Stop Reloading of file
     if(!formData.email||!formData.password)
     {
         alert("Please fill all field")
