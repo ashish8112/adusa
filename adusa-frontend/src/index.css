@@ -1,10 +1,4 @@
 @import "tailwindcss";
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 @theme{
   --color-bg:#010104; /* will use for base of every page as background which is extreme dark or most */
