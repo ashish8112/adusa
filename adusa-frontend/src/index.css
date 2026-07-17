@@ -8,7 +8,7 @@
 
 @theme{
   --color-bg:#010104; /* will use for base of every page as background which is extreme dark or most */
-  --color-surface:#020024; /* background color for modal like I did in create room of chat app, cards and navbar to look different from page background */
+  --color-surface:#111111; /* background color for modal like I did in create room of chat app, cards and navbar to look different from page background */
   --color-primary:#3a31d8; /* For action like Main button like login,signup,post and connetc etc. */
   --color-secondary:#0A0A2E; /* for secondary buttons,tags,badges and highlights like cancel, back, skip and Explore*/
   --color-accent:#0600c2; /* To grab attention of user like links, highlights and tags */
@@ -16,4 +16,5 @@
   --color-muted:#9896b8;/*used for dim color like text color is red use some text color is dim read */
   --color-success:#22c55e; /* To notify user with green like connected or send request etc. */
   --color-error:#ef4444; 
+  --color-border:#2a2a2a;
 }
