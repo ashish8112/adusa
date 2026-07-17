@@ -97,7 +97,7 @@ router.post("/users/login",async(req,res)=>{
         if(!isMatch)
           return  res.status(401).json({message:"Wrong Password, Enter Correct Password"});//Unauthorized Access
         const token = jwt.sign({id:existingUser._id,email:existingUser.email},process.env.JWT_SECRET,{expiresIn:"7d"});
-        res.status(200).json({message:"Welcome "+existingUser.name,token,id:existingUser['_id']});
+        res.status(200).json({name:existingUser.name,token,id:existingUser['_id']});
     }
     catch(err)
     {
