@@ -1,4 +1,4 @@
-# Adusa — College Networking Platform
+# Adusa — College Networking Platform.
 
 > LinkedIn for college students — focused, familiar, and built for campus life.
 
