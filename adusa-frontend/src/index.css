@@ -12,3 +12,11 @@
   --color-error:#ef4444; 
   --color-border:#2a2a2a;
 }
+
+input:-webkit-autofill{
+  -webkit-box-shadow: 0 0 0 1000px #111111 inset;
+  -webkit-text-fill-color: #ebe9fc;
+  transition: background-color 5000s ease-in-out 0s;
+  border-radius: 0.375rem;
+  clip-path: inset(0 round 0.375rem);
+}
