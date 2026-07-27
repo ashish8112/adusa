@@ -17,16 +17,5 @@ async function verifyToken(req,res,next){
 
 }
 
-function errorHandler(err,req,res,next) // No need now because try and catch is there in every route .
-{
-    
-}
 
 module.exports = verifyToken //need to send middleware method .
-
-
-// // ✅ Object mein dono export karo
-// module.exports = { verifyToken, errorHandler };
-
-// // Import karte waqt
-// const { verifyToken, errorHandler } = require("../middleware/verifyToken");
