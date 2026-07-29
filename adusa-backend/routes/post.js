@@ -1,7 +1,8 @@
 const Post = require("../models/Post");
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../middleware/verifyToken")
+const verifyToken = require("../middleware/verifyToken");
+const { post } = require("./auth");
 
 router.post("/",verifyToken,async(req,res)=>{
     try{
@@ -26,7 +27,8 @@ router.get("/",async(req,res)=>{
         const limit =5;
         const skip = (page-1)*limit;
         const posts = await Post.find({}).sort({createdAt:-1}).skip(skip).limit(limit).populate("author", "name bio");
-        return res.status(200).json(posts);
+        const total = await Post.countDocuments({});
+        return res.status(200).json({posts,page,total,hasMore:skip+posts.length<total});
     }
     catch(err){
         return res.status(500).json({error:err.message});
