@@ -4,31 +4,28 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors")
 const authRoutes = require("./routes/auth");
+const postRoutes = require("./routes/post");
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI).then(()=>{  //return promise 
-  console.log("Mongo DB connection established");
-}).catch((err)=>{
-  console.error("error: "+err.message); 
-});
 
 
 
-app.use("/api/auth",authRoutes);  // app.use = saari requests handle karta hai (GET, POST, PUT, DELETE)
+app.use("/api/auth",authRoutes);
+app.use("/api/posts",postRoutes);
 
 app.use((req,res)=>{
   res.status(404).json({message:"Invalid URL Enter Correct URL"});
 })
 
-app.listen(process.env.PORT,()=>{  
+
+mongoose.connect(process.env.MONGO_URI).then(()=>{  //return promise 
+  console.log("Mongo DB connection established");
+  app.listen(process.env.PORT,()=>{  
   console.log(`Server is started at ${process.env.PORT}`);
 });
-
-
-
-// we can connect server after connecting the db by writing listen code inside then of mongoose.connect so when connection established 
-//then only server will start 
-
-// or write like this we have written here becuase before doing any operation we are writing try and catch in every block 
+}).catch((err)=>{
+  console.error("error: "+err.message); 
+  process.exit(1);//backend server will be restarted on deployed render .
+});
