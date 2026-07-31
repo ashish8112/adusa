@@ -18,7 +18,7 @@ export default function AuthProvider({children})
     }
 
     async function login({email,password}) {
-        const {data} = await API.post("/auth/users/login",{email,password})
+        const {data} = await API.post("/auth/login",{email,password})
         setUser(data);
         localStorage.setItem("adusaUser",JSON.stringify(data));
         return data;
