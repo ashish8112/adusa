@@ -18,7 +18,7 @@ export default function Login(){
             return alert("LoggedIn Succesfully");
         }
         catch(err){
-            return alert(err.response?.data?.message||"Loggin Failed")
+            return alert(err.response?.data?.message||"LogIn Failed")
         }
     }
     function handleChange(e){
