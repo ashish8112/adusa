@@ -1,0 +1,26 @@
+1.Problem - Do I have to load entire database ? 
+Implemented off-set(skip) pagination 
+that means fetch data from database which is needed to display on one page instead of entire database collection 
+which avoid
+*heavy json file as if documents are alot helps user to save alot of data 
+* delay in response in free tier 
+* useless data as we need suppose 5 posts in page , which can cause extra memory usages and slow rendering and can cause 
+crash in application 
+
+Some Drawbacks 
+1.Slow Performance : as the offset number gets very high, database has to scan and throw all the previous rows,which makes queries slow
+
+2.Data Shifts : If new items are added or deleted while a user is browsing, rows can shift, causing users to see duplicate item or skip records entirely.
+
+conclusion 
+Lower Memory Usages
+Faster Page loads because transferring a tiny slice of data takes milliseconds,
+Reduced Database load 
+Saved Bandwidth(Internet usages)
+Gradual Rendering.
+
+
+
+
+2.Problem - Feed Monopolization (single user posts are flooded across page because offset pagination) this is known as Author diversity Problem 
+
