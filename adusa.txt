@@ -24,3 +24,16 @@ Gradual Rendering.
 
 2.Problem - Feed Monopolization (single user posts are flooded across page because offset pagination) this is known as Author diversity Problem 
 
+
+
+//reference from claude 
+// For post timing 
+const diffMs = Date.now() - new Date(post.createdAt).getTime();
+//              ↑ abhi        ↑ ISO string → Date → number
+
+const diffMin = Math.floor(diffMs / 60000);   // 60*1000
+
+if (diffMin < 1)    return "just now";
+if (diffMin < 60)   return `${diffMin}m ago`;
+if (diffMin < 1440) return `${Math.floor(diffMin/60)}h ago`;   // 1440 = 24*60
+return `${Math.floor(diffMin/1440)}d ago`;
