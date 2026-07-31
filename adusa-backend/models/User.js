@@ -14,7 +14,8 @@ const userStructuer={
     },
     password:{
         type: String,
-        required : true
+        required : true,
+        select:false
     },
     bio:{
         type: String,
