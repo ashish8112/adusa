@@ -4,7 +4,7 @@ const AuthContext = createContext();
 export default function AuthProvider({children})
 {
     const [user,setUser] = useState(()=>{
-        const saved = localStorage.getItem("user");
+        const saved = localStorage.getItem("adusaUser");
         if(saved){
             const parsedUser = JSON.parse(saved);
             // will use connectSocket for connection.
