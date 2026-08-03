@@ -14,4 +14,29 @@ API.interceptors.request.use((config)=>{
     return config;
 })
 
+API.interceptors.response.use((response)=>response,(error)=>{
+     if (!error.response) {
+      console.error("Network error. Please check your connection.");
+      return Promise.reject(error);
+    }
+   const {status,data} = error.response;
+   switch(status){
+    case 401:
+        if(data?.message==="Wrong Password, Enter Correct Password")
+        {
+            return Promise.error(error);
+        }
+        console.warn("Session Expired or Invalid Token");
+        localStorage.removeItem("adusaUser");
+        window.location.href="/login";
+        break;
+    case 500:
+        console.error(data?.message||"Something went Wrong on the Sever");
+        break;
+    default :
+        console.error(`${status}: `,data?.message||"An error Occured ")
+   }
+   return Promise.reject(error) //because catch will catch this as Promise is Rejected like await use for promise if it failed .catch which catch of that block will be executed
+})
+
 export default API;
