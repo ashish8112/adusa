@@ -2,21 +2,24 @@ import Button from "../../components/Button";
 import Input from "../../components/Input";
 import { useAuth } from "./AuthProvider";
 import { useState } from "react"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 export default function Register(){
     const [formData,setFormData] = useState({
         name:"",
         email:"",
         password:"",
     })
-    const {register} = useAuth();
+    const navigate = useNavigate();
+    const {register,login} = useAuth();
     async function handleSubmit(e){
         e.preventDefault();
         if(!formData.name||!formData.email||!formData.password)
             return alert("Please Enter all required filed");
         try{
             const data = await register(formData);
-            return alert("Signup Succesfully"||data);
+            await login(formData);
+            alert("Registered Succesfully");
+            navigate("/");
         }
         catch(err){
             return alert(err.response?.data?.message||"Failed to register Try again!");
