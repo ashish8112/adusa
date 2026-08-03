@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "./AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 export default function Login(){
@@ -8,6 +8,7 @@ export default function Login(){
         "email":"",
         "password":""
     })
+    const navigate = useNavigate();
     const {login} = useAuth();
     async function handleSubmit(e) {
         e.preventDefault();
@@ -15,7 +16,8 @@ export default function Login(){
             return alert("Please Enter all filed")
         try{
             await login(formData)
-            return alert("LoggedIn Succesfully");
+            alert("LoggedIn Succesfully");
+            navigate("/");
         }
         catch(err){
             return alert(err.response?.data?.message||"LogIn Failed")
