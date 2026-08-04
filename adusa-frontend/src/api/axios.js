@@ -22,13 +22,13 @@ API.interceptors.response.use((response)=>response,(error)=>{
    const {status,data} = error.response;
    switch(status){
     case 401:
-        if(data?.message==="Wrong Password, Enter Correct Password")
+        if(error.config.url==="/auth/login")
         {
-            return Promise.error(error);
+            return Promise.reject(error);
         }
         console.warn("Session Expired or Invalid Token");
         localStorage.removeItem("adusaUser");
-        window.location.href="/login";
+        window.location.href="/login?expired=true";
         break;
     case 500:
         console.error(data?.message||"Something went Wrong on the Sever");
