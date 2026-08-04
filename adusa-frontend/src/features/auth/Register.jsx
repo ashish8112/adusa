@@ -31,15 +31,12 @@ export default function Register(){
     return(
         <div className="h-dvh bg-bg ">
             <main className="py-6 px-4 h-full w-full flex flex-col capitalize">
-                <header className="mb-20 ">
-                <h1 className="text-primary font-bold text-xl">Adusa</h1>
-                </header>
                 <h2 className="px-4 py-6 text-center font-medium text-text text-md md:text-2xl"><span>Join Adusa now - connect for productivity!</span></h2>
                 <div className="rounded-xl mx-auto max-w-70 md:max-w-100  w-full bg-surface border border-border "> 
                 <form onSubmit={handleSubmit} className="px-6 py-4">
-                    <Input label="name" id="name" name="name" type="text" placeholder="" value={formData.name} onChange={handleChange}></Input>
-                    <Input label="email" id="email" name="email" type="email" placeholder="" value={formData.email} onChange={handleChange}></Input>
-                    <Input label="password" id="password" name="password" type="password" placeholder="" value={formData.password} onChange={handleChange}></Input>
+                    <Input label="name" id="name" name="name" type="text" placeholder="" value={formData.name} onChange={handleChange} required/>
+                    <Input label="email" id="email" name="email" type="email" placeholder="" value={formData.email} onChange={handleChange} required/>
+                    <Input label="password" id="password" name="password" type="password" placeholder="" value={formData.password} onChange={handleChange} required/>
                     <Button variant="primary" type="submit">Join</Button>
                     <p className="text-muted text-center mr-0.5">Already have an account? <Link to ="/login" className="text-primary">Login</Link> </p>
                 </form>
