@@ -6,9 +6,16 @@ export default function AuthProvider({children})
     const [user,setUser] = useState(()=>{
         const saved = localStorage.getItem("adusaUser");
         if(saved){
-            const parsedUser = JSON.parse(saved);
+            try{
+                const parsedUser = JSON.parse(saved);
             // will use connectSocket for connection.
             return parsedUser;
+            }
+            catch(err){
+                console.error("adusa User is corrupted")
+                localStorage.removeItem("adusaUser");
+                return null;
+            }
         }
         return null;
     })
