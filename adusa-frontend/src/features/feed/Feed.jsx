@@ -28,7 +28,7 @@ export default function Feed(){
   else if(posts.length===0)
     return (<p>No posts</p>)
   return(
-    <div>
+    <div className="mx-auto my-3">
       {posts.map((post)=>(
         <PostCard key={post._id} post={post}/>
       ))}
