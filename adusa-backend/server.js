@@ -15,6 +15,10 @@ app.use(cors());
 app.use("/api/auth",authRoutes);
 app.use("/api/posts",postRoutes);
 
+app.get("/api/health",(req,res)=>{
+  res.json({status:"OK",uptime:`${Math.floor(process.uptime())}s`,timestamp:new Date().toISOString()}) // Date.toISOString() is instance method that's why we need new and Date.now() is Static Method so we don't need new
+})
+
 app.use((req,res)=>{
   res.status(404).json({message:"Invalid URL Enter Correct URL"});
 })
