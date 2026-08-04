@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "./AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 export default function Login(){
@@ -8,6 +8,8 @@ export default function Login(){
         "email":"",
         "password":""
     })
+    const [searchParams] = useSearchParams();
+    const expired = searchParams.get("expired") //return null in default 
     const navigate = useNavigate();
     const {login} = useAuth();
     async function handleSubmit(e) {
@@ -29,17 +31,15 @@ export default function Login(){
     return(
         <div className="h-dvh bg-bg text-text">
             <main className="py-6 px-4 h-full w-full flex flex-col capitalize">
-                <header className="mb-20 ">
-                <h1 className="text-primary font-bold text-xl">Adusa</h1>
-                </header>
+                {expired && <p className="text-error text-sm text-center mb-2">Session Expired. Please Login Again</p>}
                 <div className="rounded-xl mx-auto max-w-70 md:max-w-100 w-full bg-surface border border-border">
                     <header className="flex flex-col px-4 py-6 space-y-0.5">
                         <h2 className=" font-medium text-text text-md md:text-xl">Sign in</h2>
                         <p className="text-sm">New to Adusa? <Link to="/register" className="text-primary ml-0.5">Join now</Link></p>
                     </header>
                     <form onSubmit={handleSubmit} className="px-6 py-4">
-                         <Input label="email" name="email" type="email" value={formData.email} onChange={handleChange} id="email"></Input>
-                         <Input label="password" name="password" type="password" value={formData.password} onChange={handleChange} id="password"></Input>
+                         <Input label="email" name="email" type="email" value={formData.email} onChange={handleChange} id="email" required/>
+                         <Input label="password" name="password" type="password" value={formData.password} onChange={handleChange} id="password" required/>
                         <Button variant="primary" type="submit">Sign in</Button>
                     </form>
                 </div>
