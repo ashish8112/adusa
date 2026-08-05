@@ -2,19 +2,22 @@ import { getInitials } from "../utils/getInitials"
 import { timeAgo } from "../utils/timeAgo"
 export default function PostCard({post}){
 return(
-    <section className="bg-surface border border-border rounded-lg max-w-96 w-full py-4 px-3 mb-4 text-text">
-
-        <div className="flex items-center gap-3 mb-3">
-            <p>{getInitials(post.author?.name)}</p>
-            <p>{post.author?.name}</p>
-        </div>
-        <div>
-            <p>{post.author?.bio}</p>
-            <p>{timeAgo(post.createdAt)}</p>
-        </div>
-
-        <div>{post.content}</div>
-        <span>{post.likes.length} likes</span>
+    <section className="bg-surface border-t border-muted border-b w-full px-2 text-text">
+        <header className="flex justify-start gap-1 p-1.5 ">
+            {post?.author?.avatar?<img className="h-6 w-6 rounded-full" src={post.author.avatar} alt={post.author.name}/> :<p>{getInitials(post.author?.name)}</p>}
+            <p> 
+            {post.author?.name}
+            </p>
+            <p className="text-muted text-sm before:content-['.'] before:mr-1">
+            {timeAgo(post.createdAt)}
+            </p>
+        </header>
+        <article className="w-full bg-bg flex flex-col rounded-lg">
+            <p>{post.content}</p>
+        </article>
+        <footer>
+            <span>{post.likes.length} likes</span>
+        </footer>
     </section>
 )
 }
