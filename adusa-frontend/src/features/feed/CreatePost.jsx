@@ -63,8 +63,5 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
             </div>
         )}
         </div>
-
-        //instead of top-0 , left-0 , right-0 and bottom-0 use inset-0 
-        //not left-0 starting of window and right-0 end of window not both are at same location like x(0,0)
     )
 }
