@@ -149,7 +149,7 @@ Note: only variables prefixed with `VITE_` are exposed to the browser bundle. Ne
 ## Developer
 
 **Ashish Kumar Shukla**
-MCA — Kristu Jayanti University, Bengaluru
+MCA - Kristu Jayanti University, Bengaluru
 BCA Gold Medalist · MERN Stack Developer
 
 [GitHub](https://github.com/ashish8112) · [LinkedIn](https://www.linkedin.com/in/ashish-shukla81/) · ashishkrshukla.dev@gmail.com
