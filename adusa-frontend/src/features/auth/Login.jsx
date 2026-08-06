@@ -37,13 +37,17 @@ export default function Login(){
                         <h2 className=" font-medium text-text text-md md:text-xl">Sign in</h2>
                         <p className="text-sm">New to Adusa? <Link to="/register" className="text-primary ml-0.5">Join now</Link></p>
                     </header>
-                    <form onSubmit={handleSubmit} className="px-6 py-4">
-                         <Input label="email" name="email" type="email" value={formData.email} onChange={handleChange} id="email" required/>
+                    <form onSubmit={handleSubmit} className="px-6 py-4 ">
+                         <Input label="email" name="email" type="email" value={formData.email} onChange={handleChange} id="email" required />
                          <Input label="password" name="password" type="password" value={formData.password} onChange={handleChange} id="password" required/>
-                        <Button variant="primary" type="submit">Sign in</Button>
+                         <div className="my-5">
+                            <Button variant="primary" type="submit">Sign in</Button>
+                         </div>
+                        
                     </form>
                 </div>
             </main>
         </div>
     )
 }
+// my-5 mx-0
