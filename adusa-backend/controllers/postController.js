@@ -14,6 +14,7 @@ const createPost = async(req,res)=>{
             return res.status(429).json({message:"Too many posts. Try again later. "});
         const post =  new Post({content,author:req.user.id});
         await post.save();
+        await post.populate("author","name bio")
         res.status(201).json({message:"Post Created",post});
     }
     catch(err){
