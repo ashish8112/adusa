@@ -24,6 +24,7 @@ export default function Feed(){
   },[])
   function handlePost(newPost){
     setPosts(prev=>[newPost,...prev]);
+    console.log(newPost);
   }
   if(loading)
     return(<p>Loading ... wait for few secs </p>);
@@ -31,7 +32,7 @@ export default function Feed(){
     <div className="bg-bg min-h-screen">
       <div className="max-w-3xl mx-auto px-4">
           <CreatePost onPostCreate={handlePost}/>
-            <div className="mx-4 space-y-3 mt-3">
+            <div className="px-4 space-y-3 mt-3">
               {error&&<p className="text-error text-center">{error}</p>}
               {(!error && posts.length===0) && <p className="text-muted text-center">No posts yet</p>}
               {posts.map((post)=>(
