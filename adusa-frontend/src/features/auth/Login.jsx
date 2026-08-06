@@ -29,8 +29,8 @@ export default function Login(){
         setFormData({...formData,[e.target.name]:e.target.value})
     }
     return(
-        <div className="h-dvh bg-bg text-text">
-            <main className="py-6 px-4 h-full w-full flex flex-col capitalize">
+        <div className=" bg-bg text-text ">
+            <main className="py-6 px-4  w-full flex flex-col capitalize">
                 {expired && <p className="text-error text-sm text-center mb-2">Session Expired. Please Login Again</p>}
                 <div className="rounded-xl mx-auto max-w-70 md:max-w-100 w-full bg-surface border border-border">
                     <header className="flex flex-col px-4 py-6 space-y-0.5">
