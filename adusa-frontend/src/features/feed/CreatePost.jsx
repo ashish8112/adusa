@@ -32,7 +32,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
         <div className="py-4 ">
         <div className="flex items-center justify-center gap-3 text-text py-4 px-4">
         {user&&<p className="h-12 w-12 rounded-full border border-border flex items-center justify-center self-start">{getInitials(user.name)}</p>}
-        <input type="text" value ="Create a post" className="text-text outline-none bg-surface border border-border rounded-full p-4 mb-4 w-full cursor-pointer" onClick={handleOpen}  readOnly/>
+        <input type="text" value ="Create a post" className="text-text outline-none bg-surface border border-border rounded-full p-3 mb-4 w-full cursor-pointer" onClick={handleOpen}  readOnly/>
         </div>
         {isOpen&&(
             <div className="fixed inset-0 bg-bg/80 flex justify-center items-center p-4 z-50 text-text" onClick={()=>setIsOpen(false)}>
