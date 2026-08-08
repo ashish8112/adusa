@@ -37,3 +37,5 @@ if (diffMin < 1)    return "just now";
 if (diffMin < 60)   return `${diffMin}m ago`;
 if (diffMin < 1440) return `${Math.floor(diffMin/60)}h ago`;   // 1440 = 24*60
 return `${Math.floor(diffMin/1440)}d ago`;
+
+3.Interceptors for sending and receiving the api
