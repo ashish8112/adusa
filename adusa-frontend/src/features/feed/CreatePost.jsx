@@ -12,8 +12,14 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
     const navigate = useNavigate();
     async function handleSubmit(e){
         e.preventDefault();
+        let postContent = content.trim();
+        if(!postContent)
+        {
+            alert("Please Write Something to post");
+            return ;
+        }
         try{
-            const {data} = await API.post("/posts",{content});
+            const {data} = await API.post("/posts",{content:postContent});
             setIsOpen(false);
             setContent("");
             onPostCreate(data.post)//because data contains alot of key and value where we need post only 
