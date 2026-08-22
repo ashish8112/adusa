@@ -24,7 +24,6 @@ export default function Feed(){
   },[])
   function handlePost(newPost){
     setPosts(prev=>[newPost,...prev]);
-    console.log(newPost);
   }
   if(loading)
     return(<p>Loading ... wait for few secs </p>);
