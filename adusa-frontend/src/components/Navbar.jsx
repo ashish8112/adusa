@@ -11,7 +11,12 @@ export default function Navbar(){
                 <h1 className="text-primary font-bold text-xl cursor-pointer" onClick={()=>navigate("/")}>Adusa</h1>
             </header>
             <ul className="flex gap-2">
-               {user? (<li><Button variant="primary" onClick={()=>logout()}>Logout</Button></li>):(
+               {user? (
+                <>
+                <li><p className="h-15 w-15 rounded-full border border-border flex items-center justify-center self-start">{user.name}</p></li>
+               <li><Button variant="primary" onClick={()=>logout()}>Logout</Button></li>
+               </>
+               ):(
                 <>
                     <li><Button variant="secondary" onClick={()=>navigate("/login")}>Login</Button></li>
                     <li><Button variant="primary" onClick={()=>navigate("/register")}>Register</Button></li>
