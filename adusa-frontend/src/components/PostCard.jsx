@@ -16,8 +16,12 @@ return(
             <p>{post.content}</p>
         </article>
         <footer className="px-4 py-3 cursor-pointer border-border border-t">
-            <span>{post.likes.length} likes</span>
+            <span>{post?.likes?.length ?? 0} likes</span>
         </footer>
     </section>
 )
 }
+//?? Nullish Coalescing operator choose right if left is undefined or null 
+// because suppose post?.views || "Not tracked"  I have written but that specific post has 0 value means 0 || "Not tracked" will render "Not tracked"
+// as 0 falsy  so it is wrong here 0 should be printed 
+// post?.views ?? "Not tracked" , Not tracked be only rendered if post?.views is undefined or null not in 0 
