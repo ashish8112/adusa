@@ -54,4 +54,17 @@ const toggleLike = async(req,res)=>{
     }
 }
 
-module.exports={createPost,getFeed,toggleLike};
+const checkLike = async(req,res)=>{
+    try{
+        const post = await Post.findById(req.params.id);
+        if(!post)
+            return res.status(404).json({messgage:"No post exists"});
+        const liked = post.likes.some((id)=>(id.toString()===req.user.id));
+        return res.status(200).json({liked});
+    }
+    catch(err){
+        return res.status(500).json({message:err.message});
+    }
+}
+
+module.exports={createPost,getFeed,toggleLike,checkLike};
