@@ -39,3 +39,7 @@ if (diffMin < 1440) return `${Math.floor(diffMin/60)}h ago`;   // 1440 = 24*60
 return `${Math.floor(diffMin/1440)}d ago`;
 
 3.Interceptors for sending and receiving the api
+
+
+4.Problem Faced 
+N+1 Query problem during check on each post that user has liked or not to show like and unlike button accordingly 

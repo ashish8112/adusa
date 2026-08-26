@@ -11,6 +11,7 @@ export default function Feed(){
       try{
         const {data} = await API.get("/posts");
         setPosts(data.posts);
+        console.log(data.posts);
       }
       catch(err){
         setError(err.response?.data?.message||"Failed to get Posts");
@@ -35,7 +36,7 @@ export default function Feed(){
               {error&&<p className="text-error text-center">{error}</p>}
               {(!error && posts.length===0) && <p className="text-muted text-center">No posts yet</p>}
               {posts.map((post)=>(
-                  <PostCard key={post._id} post={post}/>
+                  <PostCard key={post._id} post={post} updatePost={setPosts}/>
               ))}
             </div>
       </div>

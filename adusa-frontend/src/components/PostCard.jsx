@@ -1,6 +1,37 @@
 import { getInitials } from "../utils/getInitials"
 import { timeAgo } from "../utils/timeAgo"
-export default function PostCard({post}){
+import {useEffect, useState} from "react"
+import API from "../api/axios"
+export default function PostCard({post,updatePost}){
+    const [like,setLike] = useState(false);
+    useEffect(()=>{
+        async function  checkLike(){
+        try{
+            const {data} = await API.get(`/posts/${post._id}/check`);
+            const {like} = data;
+            setLike(like);
+        }
+        catch(err){
+            console.error(err.response?.data?.message||"Unable to fetch your like")
+        }
+    }
+    checkLike();
+    },[])
+    
+    async function toggleLike(){
+        try{
+            const {data} = await API.post(`/posts/${post._id}/like`)
+            setLike(data.liked);
+            updatePost(prev=>prev.map(p=>{
+                if(p._id===post._id)
+                    return    ({...p,likes:data.likes})
+                return p;
+            }))
+        }
+        catch(err){
+            console.error(err.response?.data?.message||"Unable to perfrom like or unlinke action")
+        }
+    }
 return(
     <section className="bg-surface border border-border rounded-xl px-2 text-text overflow-hidden ">
         <header className="flex items-center gap-2 py-3 px-4 ">
@@ -16,7 +47,7 @@ return(
             <p>{post.content}</p>
         </article>
         <footer className="px-4 py-3 cursor-pointer border-border border-t">
-            <span>{post?.likes?.length ?? 0} likes</span>
+            <span>{post?.likes?.length ?? 0} <button className="cursor-pointer" onClick={toggleLike}>{(like)?"Unlike":"like"}</button></span>
         </footer>
     </section>
 )
