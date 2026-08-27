@@ -42,8 +42,15 @@ return `${Math.floor(diffMin/1440)}d ago`;
 
 
 4.Problem Faced 
-N+1 Query problem during check on each post that user has liked or not to show like and unlike button accordingly 
+1. N+1 Query problem during check on each post that user has liked or not to show like and unlike button accordingly 
 
 Solution: 1.Created OptionalAuthentical Middleware for loggedout user and in public route send checkLike as well as geet feed with one api request 
 I got everythig check getFeed method in postController file 
 
+5. When I am clicking like button or unlike button why it is taking time to reflect or render on screen ? 
+
+because updating of useState depend on asynchronous method of calling toggleLike api so it takes till it respond that's why it's slow 
+
+Solution: added changing ui manually before api respond using Optimistic Update: Change UI immediately and let api respond, if it fails suppose internet is 
+down or backend or database is down in catch rollback to previous state because before channging ui we have saved previous state. 
+//Location of solution : PostCard.jsx in toogleLike method
