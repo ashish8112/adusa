@@ -6,10 +6,10 @@ export default function PostCard({post,updatePost}){
     const {user}= useAuth();
     async function toggleLike(){
         const previousPost = post; // only this means single post data not all 
-            updatePost(prev=>prev.map(p=>{
+            updatePost(prev=>prev.map(p=>{ //Imediately update before api call 
                 if(p._id===post._id){ //every id is string to no need to convert anything to check 
                     const isAlreadyLiked = p.likes.includes(user.id);
-                    const updatedLikes = isAlreadyLiked ?p.likes.filter(id=>id!==user.id):[...p.likes,user.id];
+                    const updatedLikes = isAlreadyLiked ?p.likes.filter(id=>id!==user.id):[...p.likes,user.id]; //...p.likes means like array all data and user.id at last in array it is only position but in object it means updating if it is in prefix and update is in last means update last value Toh update karne ke liye hamesha { ...purana, nayaField: value } and if { nayaField: value, ...purana } means last will override and changes will not seen it is not used for default values
                     return{...p,likes:updatedLikes,liked:!isAlreadyLiked};
                 }
                 return p;
@@ -23,7 +23,7 @@ export default function PostCard({post,updatePost}){
             }))
         }
         catch(err){
-            updatePost(prev=>prev.map(p=>{
+            updatePost(prev=>prev.map(p=>{ //api call fails
                 if(p._id===post._id)
                     return previousPost; // send previous data this post only for that post id 
                 return p;
