@@ -11,7 +11,6 @@ export default function Feed(){
       try{
         const {data} = await API.get("/posts");
         setPosts(data.posts);
-        console.log(data.posts);
       }
       catch(err){
         setError(err.response?.data?.message||"Failed to get Posts");
