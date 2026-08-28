@@ -28,7 +28,7 @@ export default function Feed(){
   if(loading)
     return(<p>Loading ... wait for few secs </p>);
   return(
-    <div className="bg-bg min-h-screen">
+    <div className="bg-bg">
       <div className="max-w-3xl mx-auto px-4">
           <CreatePost onPostCreate={handlePost}/>
             <div className="px-4 space-y-4 mt-6">

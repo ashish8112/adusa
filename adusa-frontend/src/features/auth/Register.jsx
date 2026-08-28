@@ -29,11 +29,11 @@ export default function Register(){
         setFormData({...formData,[e.target.name]:e.target.value})
     }
     return(
-        <div className="h-dvh bg-bg ">
-            <main className="py-6 px-4 h-full w-full flex flex-col capitalize">
-                <h2 className="px-4 py-6 text-center font-medium text-text text-md md:text-2xl"><span>Join Adusa now - connect for productivity!</span></h2>
+        <div className=" bg-bg text-text flex items-center justify-center">
+            <main className="py-6 px-4 w-full flex flex-col">
+                <h2 className="px-4 py-6 text-center font-medium text-text text-base md:text-2xl"><span>Join Adusa now - connect for productivity!</span></h2>
                 <div className="rounded-xl mx-auto max-w-70 md:max-w-100  w-full bg-surface border border-border "> 
-                <form onSubmit={handleSubmit} className="px-6 py-4">
+                <form onSubmit={handleSubmit} className="px-6 py-4 space-y-2">
                     <Input label="name" id="name" name="name" type="text" placeholder="" value={formData.name} onChange={handleChange} required/>
                     <Input label="email" id="email" name="email" type="email" placeholder="" value={formData.email} onChange={handleChange} required/>
                     <Input label="password" id="password" name="password" type="password" placeholder="" value={formData.password} onChange={handleChange} required/>

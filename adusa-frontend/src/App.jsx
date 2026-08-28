@@ -7,17 +7,19 @@ import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
-    <>
-    <Navbar/>
-   <Routes>
-    <Route path="/" element={<ErrorBoundary><Feed></Feed></ErrorBoundary>}/>
-    <Route path="/register" element={<ErrorBoundary>
-      <Register></Register>
-    </ErrorBoundary>}/>
-    <Route path="/login" element={<ErrorBoundary>
-      <Login></Login>
-    </ErrorBoundary>}/>
-   </Routes>
-   </>
+    <div className="min-h-screen flex flex-col">
+      <Navbar/>
+      <main className="flex-1 grid">
+          <Routes>
+              <Route path="/" element={<ErrorBoundary><Feed></Feed></ErrorBoundary>}/>
+              <Route path="/register" element={<ErrorBoundary>
+                <Register></Register>
+              </ErrorBoundary>}/>
+              <Route path="/login" element={<ErrorBoundary>
+                <Login></Login>
+              </ErrorBoundary>}/>
+          </Routes>
+      </main>
+   </div>
   )
 }

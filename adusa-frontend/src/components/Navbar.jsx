@@ -7,7 +7,7 @@ export default function Navbar(){
     const {logout,user} = useAuth();
     const navigate = useNavigate();
     return(
-        <nav className="flex py-6 px-4 justify-between bg-bg sticky top-0">
+        <nav className="flex py-4 px-4 justify-between bg-bg sticky top-0">
             <header>
                 <h1 className="text-primary font-bold text-xl cursor-pointer" onClick={()=>navigate("/")}>Adusa</h1>
             </header>
