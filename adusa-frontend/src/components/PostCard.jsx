@@ -32,20 +32,21 @@ export default function PostCard({post,updatePost}){
         }
     }
 return(
-    <section className="bg-surface border border-border rounded-xl px-2 text-text overflow-hidden ">
-        <header className="flex items-center gap-2 py-3 px-4 ">
-            {post?.author?.avatar?<img className="h-6 w-6 rounded-full" src={post.author.avatar} alt={post.author.name}/> :<p>{getInitials(post.author?.name)}</p>}
-            <p> 
+    <section className="bg-surface border border-border rounded-xl text-text overflow-hidden ">
+        <header className="flex items-center gap-2 px-4 py-4">
+            {post?.author?.avatar?<img className="h-6 w-6 rounded-full" src={post.author.avatar} alt={post.author.name}/> :
+            <p className="text-xs font-medium h-6 w-6 rounded-full border  border-border flex justify-center items-center">{getInitials(post.author?.name)}</p>}
+            <p className="text-base font-medium"> 
             {post.author?.name}
             </p>
-            <p className="text-muted text-sm before:content-['.'] before:mr-1">
+            <p className="text-muted text-xs before:content-['.'] before:mr-1">
             {timeAgo(post.createdAt)}
             </p>
         </header>
-        <article className=" pb-4 px-4">
-            <p>{post.content}</p>
+        <article className=" px-4 pt-1 pb-4 ">
+            <p className="text-base leading-relaxed ">{post.content}</p>
         </article>
-        <footer className="px-4 py-3 border-border border-t">
+        <footer className="px-4 py-4 border-border border-t">
              <button className="cursor-pointer flex items-center gap-2" onClick={toggleLike}>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
@@ -56,7 +57,7 @@ return(
                 >
                     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
                 </svg>
-                <span>{post?.likes?.length ?? 0}</span>
+                <span className="text-sm">{post?.likes?.length ?? 0}</span>
             </button>
         </footer>
     </section>
