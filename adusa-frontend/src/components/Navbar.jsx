@@ -10,10 +10,10 @@ export default function Navbar(){
             <header>
                 <h1 className="text-primary font-bold text-xl cursor-pointer" onClick={()=>navigate("/")}>Adusa</h1>
             </header>
-            <ul className="flex gap-2">
+            <ul className="flex gap-4">
                {user? (
                 <>
-                <li><p className="h-15 w-15 rounded-full border border-border flex items-center justify-center self-start">{user.name}</p></li>
+                <li><p className="h-14 w-14 rounded-full border border-border flex items-center justify-center self-start text-base">{user.name}</p></li>
                <li><Button variant="primary" onClick={()=>logout()}>Logout</Button></li>
                </>
                ):(

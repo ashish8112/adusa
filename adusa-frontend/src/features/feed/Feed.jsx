@@ -31,7 +31,7 @@ export default function Feed(){
     <div className="bg-bg min-h-screen">
       <div className="max-w-3xl mx-auto px-4">
           <CreatePost onPostCreate={handlePost}/>
-            <div className="px-4 space-y-3 mt-3">
+            <div className="px-4 space-y-4 mt-6">
               {error&&<p className="text-error text-center">{error}</p>}
               {(!error && posts.length===0) && <p className="text-muted text-center">No posts yet</p>}
               {posts.map((post)=>(

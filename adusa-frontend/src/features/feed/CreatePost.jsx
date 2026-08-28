@@ -35,31 +35,31 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
         setIsOpen(true);
     }
     return(
-        <div className="py-4 ">
-        <div className="flex items-center justify-center gap-3 text-text py-4 px-4">
-        {user&&<p className="h-12 w-12 rounded-full border border-border flex items-center justify-center self-start">{getInitials(user.name)}</p>}
-        <input type="text" value ="Create a post" className="text-text outline-none bg-surface border border-border rounded-full p-3 mb-4 w-full cursor-pointer" onClick={handleOpen}  readOnly/>
+        <div >
+        <div className="flex items-center justify-center gap-2 text-text p-4">
+        {user&&<p className="h-14 w-14 rounded-full border border-border flex shrink-0 items-center justify-center self-start">{getInitials(user.name)}</p>}
+        <input type="text" value ="Create a post" className="text-text text-lg outline-none bg-surface border border-border rounded-full p-3  w-full cursor-pointer hover:border-muted" onClick={handleOpen}  readOnly/>
         </div>
         {isOpen&&(
-            <div className="fixed inset-0 bg-bg/80 flex justify-center items-center p-4 z-50 text-text" onClick={()=>setIsOpen(false)}>
+            <div className="fixed inset-0 bg-bg/80 flex justify-center items-center z-50 text-text" onClick={()=>setIsOpen(false)}>
                 <div className="w-full max-w-xl rounded-xl shadow-2xl overflow-hidden border border-border bg-surface " onClick={(e)=>e.stopPropagation()}>
                     <div className="flex justify-between items-center p-4">
-                    <h3>Create Post</h3>
-                    <button className="cursor-pointer text-md" onClick={()=>setIsOpen(false)}>&times;</button>
+                    <h3 className="text-text font-semibold text-lg">Create Post</h3>
+                    <button className="cursor-pointer text-sm font-semibold" onClick={()=>setIsOpen(false)}>&times;</button>
                     </div>
 
                     <form onSubmit={handleSubmit} className="flex flex-col p-4">
-                        <div className="my-3  border-b">
+                        <div className="border-border border-b">
                             <textarea
-                            className="w-full h-60 resize-none outline-none"
+                            className="text-text text-base w-full h-60 resize-none outline-none leading-relaxed"
                                 id="body"
                                 value={content}
                                 placeholder="Share something with your network... "
-                                
                                 onChange={(e)=>setContent(e.target.value)}
                             />
                         </div>
-                        <div className=" self-end">
+                        <div className="pt-4 self-end flex gap-2">
+                            <Button variant="secondary" type="button" onClick={() => setIsOpen(false)}>Cancel</Button>
                             <Button type="submit" >Post</Button>
                         </div>
                     </form>
