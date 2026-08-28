@@ -38,7 +38,7 @@ export default function Register(){
                     <Input label="email" id="email" name="email" type="email" placeholder="" value={formData.email} onChange={handleChange} required/>
                     <Input label="password" id="password" name="password" type="password" placeholder="" value={formData.password} onChange={handleChange} required/>
                     <div className="my-5">
-                        <Button variant="primary" type="submit">Join</Button>
+                        <Button variant="primary" type="submit" fullWidth={true}>Join</Button>
                     </div>
                     <p className="text-muted text-center mr-0.5">Already have an account? <Link to ="/login" className="text-primary">Login</Link> </p>
                 </form>

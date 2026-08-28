@@ -41,7 +41,7 @@ export default function Login(){
                          <Input label="email" name="email" type="email" value={formData.email} onChange={handleChange} id="email" required />
                          <Input label="password" name="password" type="password" value={formData.password} onChange={handleChange} id="password" required/>
                          <div className="my-5">
-                            <Button variant="primary" type="submit">Sign in</Button>
+                            <Button variant="primary" type="submit" fullWidth={true}>Sign in</Button>
                          </div>
                         
                     </form>
@@ -50,4 +50,3 @@ export default function Login(){
         </div>
     )
 }
-// my-5 mx-0

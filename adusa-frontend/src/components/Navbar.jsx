@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../features/auth/AuthProvider";
 import Button from "./Button";
+import { getInitials } from "../utils/getInitials";
 
 export default function Navbar(){
     const {logout,user} = useAuth();
@@ -10,10 +11,10 @@ export default function Navbar(){
             <header>
                 <h1 className="text-primary font-bold text-xl cursor-pointer" onClick={()=>navigate("/")}>Adusa</h1>
             </header>
-            <ul className="flex gap-4">
+            <ul className="flex gap-4 items-center">
                {user? (
                 <>
-                <li><p className="h-14 w-14 rounded-full border border-border flex items-center justify-center self-start text-base">{user.name}</p></li>
+                <li><p className="h-10 w-10 rounded-full border border-border flex items-center justify-center  text-base">{getInitials(user.name)}</p></li>
                <li><Button variant="primary" onClick={()=>logout()}>Logout</Button></li>
                </>
                ):(
