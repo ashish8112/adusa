@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { getInitials } from "../../utils/getInitials";
 export default function CreatePost({onPostCreate}){ //This will be protected Route
     const [isOpen , setIsOpen]=useState(false);
+    const [submitting,setSubmitting] = useState(false);
     const submittingRef = useRef(false);
     const {user} = useAuth();
     const [content,setContent] = useState("");
@@ -21,6 +22,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
             return ;
         }
         submittingRef.current = true;
+        setSubmitting(true);
         try{
             const {data} = await API.post("/posts",{content:postContent});
             setContent("");
@@ -33,6 +35,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
         }
         finally{
             submittingRef.current = false;
+            setSubmitting(false);
         }
     }
     function handleOpen(){
@@ -66,7 +69,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
                         </div>
                         <div className="pt-4 self-end flex gap-2">
                             <Button variant="secondary" type="button" onClick={() => setIsOpen(false)}>Cancel</Button>
-                            <Button type="submit" disabled={submittingRef.current}>{submittingRef.current ? "Posting..." : "Post"}</Button>
+                            <Button type="submit" disabled={submittingRef.current}>{submitting ? "Posting..." : "Post"}</Button>
                         </div>
                     </form>
 
