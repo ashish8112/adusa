@@ -1,4 +1,4 @@
-export default function Button({onClick,type,children,variant="primary",size="md",fullWidth=false}){
+export default function Button({onClick,type,children,variant="primary",size="md",fullWidth=false,disabled=false}){
     const sizes = {
         sm: "py-2 px-3 text-sm",
         md: "py-3 px-4 text-base",
@@ -12,7 +12,8 @@ return(
     <button 
         type={type} 
         onClick={onClick} 
-        className={`rounded-full outline-none cursor-pointer transition-all duration-150 ease-in ${style} ${sizes[size]} ${width}`}
+        disabled={disabled}
+        className={`rounded-full outline-none cursor-pointer transition-all duration-150 ease-in ${style} ${sizes[size]} ${width} ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
     >
         {children}
     </button>   
