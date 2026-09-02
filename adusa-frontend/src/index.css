@@ -3,7 +3,7 @@
 @theme{
   --color-bg:#010104; /* will use for base of every page as background which is extreme dark or most */
   --color-surface:#111111; /* background color for modal like I did in create room of chat app, cards and navbar to look different from page background */
-  --color-primary:#3a31d8; /* For action like Main button like login,signup,post and connetc etc. */
+  --color-primary:#3a31d8; /* For action like Main button like login,signup,post and connect etc. */
   --color-primary-hover:  #2f27b0;  
   --color-primary-active: #251e8a; 
   --color-secondary:#22222d; /* for secondary tags,badges and highlights like cancel, back, skip and Explore*/
