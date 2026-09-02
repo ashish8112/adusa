@@ -18,7 +18,7 @@ export default function Register(){
         try{
             const data = await register(formData);
             await login(formData);
-            alert("Registered Succesfully");
+            alert("Registered Successfully");
             navigate("/");
         }
         catch(err){
