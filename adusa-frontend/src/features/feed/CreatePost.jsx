@@ -13,6 +13,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
     const navigate = useNavigate();
     async function handleSubmit(e){
         e.preventDefault();
+        if (submitting) return;
         let postContent = content.trim();
         if(!postContent)
         {
