@@ -66,7 +66,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
                         </div>
                         <div className="pt-4 self-end flex gap-2">
                             <Button variant="secondary" type="button" onClick={() => setIsOpen(false)}>Cancel</Button>
-                            <Button type="submit" disabled={submittingRef.current}>{submitting.current ? "Posting..." : "Post"}</Button>
+                            <Button type="submit" disabled={submittingRef.current}>{submittingRef.current ? "Posting..." : "Post"}</Button>
                         </div>
                     </form>
 
