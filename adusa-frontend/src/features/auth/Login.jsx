@@ -18,7 +18,7 @@ export default function Login(){
             return alert("Please Enter all filed")
         try{
             await login(formData)
-            alert("LoggedIn Succesfully");
+            alert("LoggedIn Successfully");
             navigate("/");
         }
         catch(err){
