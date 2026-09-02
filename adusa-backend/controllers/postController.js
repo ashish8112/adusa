@@ -28,11 +28,11 @@ const getFeed = async(req,res)=>{
         const limit =5;
         const skip = (page-1)*limit;                                                            //note mongoose always send _id unless you write -_id
         const posts = await Post.find({}).sort({createdAt:-1}).skip(skip).limit(limit).populate("author", "name bio").lean(); //lean gives plain js object but with tradeoff not save,populate etc method is not available afterward.
-        const postswithLiked = posts.map((post)=>{ //note individual post is plain js now 
+        const postsWithLiked = posts.map((post)=>{ //note individual post is plain js now 
                return {...post,liked:req.user?post.likes.some((id)=>(id.toString()===req.user.id)):false} // some will check if it will find true and break when it finds or after end return false if user exists.
         })
         const total = await Post.countDocuments({});
-        return res.status(200).json({posts:postswithLiked,page,total,hasMore:skip+posts.length<total});
+        return res.status(200).json({posts:postsWithLiked,page,total,hasMore:skip+posts.length<total});
     }
     catch(err){
         return res.status(500).json({error:err.message});
