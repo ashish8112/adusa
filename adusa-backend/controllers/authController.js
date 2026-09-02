@@ -28,7 +28,7 @@
             const {email,password}=req.body;
             const existingUser = await User.findOne({email}).select("+password");
             if(!existingUser)
-            return res.status(404).json({message:"Email id is wrong or user dosen't exist with this email"});
+            return res.status(404).json({message:"Email id is wrong or user doesn't exist with this email"});
             const hashedPassword = existingUser.password;
             const isMatch = await bcrypt.compare(password,hashedPassword);
             if(!isMatch)

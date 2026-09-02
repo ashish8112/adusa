@@ -1,25 +1,27 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import API from "../../api/axios"
 import Button from "../../components/Button";
 import { useAuth } from "../auth/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import Input from "../../components/Input";
 import { getInitials } from "../../utils/getInitials";
 export default function CreatePost({onPostCreate}){ //This will be protected Route
     const [isOpen , setIsOpen]=useState(false);
+    const submittingRef = useRef(false);
     const [submitting,setSubmitting] = useState(false);
     const {user} = useAuth();
     const [content,setContent] = useState("");
     const navigate = useNavigate();
     async function handleSubmit(e){
         e.preventDefault();
-        if (submitting) return;
+        if(submittingRef.current)
+            return;
         let postContent = content.trim();
         if(!postContent)
         {
             alert("Please Write Something to post");
             return ;
         }
+        submittingRef.current = true;
         setSubmitting(true);
         try{
             const {data} = await API.post("/posts",{content:postContent});
@@ -33,6 +35,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
         }
         finally{
             setSubmitting(false);
+            submittingRef.current = false;
         }
     }
     function handleOpen(){
