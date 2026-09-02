@@ -2,7 +2,7 @@
 Implemented off-set(skip) pagination 
 that means fetch data from database which is needed to display on one page instead of entire database collection 
 which avoid
-*heavy json file as if documents are alot helps user to save alot of data 
+*heavy json file as if documents are a lot helps user to save a lot of data 
 * delay in response in free tier 
 * useless data as we need suppose 5 posts in page , which can cause extra memory usages and slow rendering and can cause 
 crash in application 
@@ -29,7 +29,7 @@ Gradual Rendering.
 //reference from claude 
 // For post timing 
 const diffMs = Date.now() - new Date(post.createdAt).getTime();
-//              ↑ abhi        ↑ ISO string → Date → number
+//              ↑ just now        ↑ ISO string → Date → number
 
 const diffMin = Math.floor(diffMs / 60000);   // 60*1000
 
@@ -44,13 +44,17 @@ return `${Math.floor(diffMin/1440)}d ago`;
 4.Problem Faced 
 1. N+1 Query problem during check on each post that user has liked or not to show like and unlike button accordingly 
 
-Solution: 1.Created OptionalAuthentical Middleware for loggedout user and in public route send checkLike as well as geet feed with one api request 
-I got everythig check getFeed method in postController file 
+Solution: 1.Created OptionalAuthentication Middleware for logged out user and in public route send checkLike as well as get feed with one api request 
+I got everything check getFeed method in postController file 
 
 5. When I am clicking like button or unlike button why it is taking time to reflect or render on screen ? 
 
 because updating of useState depend on asynchronous method of calling toggleLike api so it takes till it respond that's why it's slow 
 
 Solution: added changing ui manually before api respond using Optimistic Update: Change UI immediately and let api respond, if it fails suppose internet is 
-down or backend or database is down in catch rollback to previous state because before channging ui we have saved previous state. 
-//Location of solution : PostCard.jsx in toogleLike method
+down or backend or database is down in catch rollback to previous state because before changing ui we have saved previous state. 
+//Location of solution : PostCard.jsx in toggleLike method
+
+6.Profile update - destructuring vs whitelist loop
+Started as const {bio, college, avatar} = req.body. Chose Whitelist loop because if new field comes only I have to change array ex 
+I decided to give new update option so I will need only one place to change in my api else that field will blocked -> look at userController.js updateUserById
