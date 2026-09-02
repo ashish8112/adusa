@@ -7,6 +7,7 @@ import Input from "../../components/Input";
 import { getInitials } from "../../utils/getInitials";
 export default function CreatePost({onPostCreate}){ //This will be protected Route
     const [isOpen , setIsOpen]=useState(false);
+    const [submitting,setSubmitting] = useState(false);
     const {user} = useAuth();
     const [content,setContent] = useState("");
     const navigate = useNavigate();
@@ -18,15 +19,19 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
             alert("Please Write Something to post");
             return ;
         }
+        setSubmitting(true);
         try{
             const {data} = await API.post("/posts",{content:postContent});
-            setIsOpen(false);
             setContent("");
-            onPostCreate(data.post)//because data contains alot of key and value where we need post only 
+            setIsOpen(false);
+            onPostCreate(data.post)//because data contains a lot of key and value where we need post only 
         }
         catch(err)
         {
              alert(err.response?.data?.message||"Failed to Post");
+        }
+        finally{
+            setSubmitting(false);
         }
     }
     function handleOpen(){
@@ -60,7 +65,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
                         </div>
                         <div className="pt-4 self-end flex gap-2">
                             <Button variant="secondary" type="button" onClick={() => setIsOpen(false)}>Cancel</Button>
-                            <Button type="submit" >Post</Button>
+                            <Button type="submit" disabled={submitting}>{submitting ? "Posting..." : "Post"}</Button>
                         </div>
                     </form>
 
