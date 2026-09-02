@@ -16,6 +16,7 @@
   --color-text:#ebe9fc; /* Text of normal color must be properly visible to user */
   --color-muted:#9896b8;/*used for dim color like text color is red use some text color is dim read */
   --color-success:#22c55e; /* To notify user with green like connected or send request etc. */
+  --color-like: #E0245E;
   --color-error:#ef4444; 
   --color-border:#2a2a2a;
 }

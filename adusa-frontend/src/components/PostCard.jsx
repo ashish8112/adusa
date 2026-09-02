@@ -28,7 +28,7 @@ export default function PostCard({post,updatePost}){
                     return previousPost; // send previous data this post only for that post id 
                 return p;
             }))
-            console.error(err.response?.data?.message||"Unable to perfrom like or unlinke action")
+            console.error(err.response?.data?.message||"Unable to perform like or unlike action")
         }
     }
 return(
@@ -47,7 +47,7 @@ return(
             <p className="text-base leading-relaxed ">{post.content}</p>
         </article>
         <footer className="px-4 py-4 border-border border-t">
-             <button className="cursor-pointer flex items-center gap-2" onClick={toggleLike}>
+             <button className={`cursor-pointer flex items-center gap-2 transition-colors duration-200 ${post?.liked ? "text-like" : "text-muted hover:text-text"}`}  onClick={toggleLike}>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
                     fill={post?.liked ? "currentColor" : "none"}
