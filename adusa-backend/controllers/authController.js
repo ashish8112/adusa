@@ -1,4 +1,5 @@
 const User = require("../models/User"); 
+const Post = require("../models/Post");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -9,13 +10,13 @@ const registerUser = async (req,res)=>{
     const {name,email,password} = req.body; //destructing in key of name,email and password.
     const existingUser = await User.findOne({email});       // email : "abc@1234",
     if(existingUser){
-        return res.status(400).json({message:"Email is already Registerd"});
+        return res.status(400).json({message:"Email is already Registered"});
     }
     // await new User({name,email,password}).save();    Decrease Readability.
     const hashedPassword = await bcrypt.hash(password,10); 
     const user = new User ({name,email,password:hashedPassword});
     await user.save();  //saving document (row) int collection (table).
-    res.status(201).json({message: "User Registerd"});      //201 Created
+    res.status(201).json({message: "User Registered"});      //201 Created
     }
     catch (err)
     {
@@ -44,7 +45,7 @@ const loginUser = async(req,res)=>{
 
 const getAllUsers = async(req,res)=>{
     try{
-         //const users = await User.find({});//returns Array of Object becuase every documnet in object so Array of Ojbect
+         //const users = await User.find({});//returns Array of Object because every document in object so Array of Object
          const users = await User.find({}).select("-password") // it will exclude the password 
         //res.json({users});  we can send array,object or anything everything is valid json 
         res.json(users);
@@ -66,6 +67,23 @@ const getUserById= async(req,res)=>{
     catch(err)
     {
         res.status(500).json({error:err.message});
+    }
+}
+
+const getProfileById = async (req,res)=>{
+    try{
+        const id = req.params.id;
+        const user = await User.findById(id).select("-password");
+        if(!user)
+            return res.status(404).json({message:"User doesn't exist"});
+        const posts = await Post.find({author:id}).sort({createdAt:-1}).lean();
+        const postsWithLiked = posts.map((post)=>{
+            return {...post,liked: req.user ? post.likes.some((id)=>id.toString()===req.user.id) : false}
+        })
+        return res.status(200).json({user,posts:postsWithLiked});
+    }
+    catch(err){
+        res.status(500).json({error:err.message})
     }
 }
 
@@ -93,7 +111,7 @@ const deleteUserById = async(req,res)=>{
         const user= await User.findByIdAndDelete(id);//In findById no need to send as object. 
         if(!user)
             return res.status(404).json({message:"User not found"});
-        res.status(200).json({message:"User Deleted Succesfully"})
+        res.status(200).json({message:"User Deleted Successfully"})
     }
     catch(err)
     {
@@ -102,4 +120,4 @@ const deleteUserById = async(req,res)=>{
 }
 
 
-module.exports = {registerUser, loginUser, getAllUsers, getUserById, updateUserById, deleteUserById};
+module.exports = {registerUser, loginUser, getAllUsers, getProfileById, getUserById, updateUserById, deleteUserById};

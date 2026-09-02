@@ -1,8 +1,6 @@
-//This file only defines blueprint (Structure) 
-
 const mongoose = require("mongoose"); 
 
-const userStructuer={  
+const userStructure={  
     name:{
         type: String,
         required: true
@@ -20,9 +18,17 @@ const userStructuer={
     bio:{
         type: String,
         default : ""
+    },
+    avatar:{
+        type: String,
+        default :""
+    },
+    college:{
+        type: String,
+        default: ""
     }
 }
-const userSchema = new mongoose.Schema(userStructuer);
+const userSchema = new mongoose.Schema(userStructure);
 
 const User = mongoose.model("User",userSchema);  
 
