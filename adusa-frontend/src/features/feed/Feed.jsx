@@ -10,7 +10,7 @@ export default function Feed(){
     async function fetchPost(){
       try{
         const {data} = await API.get("/posts");
-        setPosts(data.posts);
+        setPosts(data.posts || []);
       }
       catch(err){
         setError(err.response?.data?.message||"Failed to get Posts");
@@ -33,8 +33,8 @@ export default function Feed(){
           <CreatePost onPostCreate={handlePost}/>
             <div className="px-4 space-y-4 mt-6">
               {error&&<p className="text-error text-center">{error}</p>}
-              {(!error && posts?.length===0) && <p className="text-muted text-center">No posts yet</p>}
-              {posts?.map((post)=>(
+              {(!error && posts.length===0) && <p className="text-muted text-center">No posts yet</p>}
+              {posts.map((post)=>(
                   <PostCard key={post._id} post={post} updatePost={setPosts}/>
               ))}
             </div>
