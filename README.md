@@ -4,6 +4,11 @@
 
 **Live:** [adusa.vercel.app](https://adusa.vercel.app) · **API:** [adusa-backend.onrender.com](https://adusa-backend.onrender.com)
 
+
+> **[Architecture decisions and tradeoffs →](./DECISIONS.md)**
+> Pagination, feed monopolization, N+1 fix, optimistic updates — what was
+> chosen, what was rejected, and why.
+
 ---
 
 ## About
