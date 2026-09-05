@@ -8,7 +8,7 @@ const getProfileById = async (req,res)=>{
         const user = await User.findById(id).select("name bio avatar college");
         if(!user)
             return res.status(404).json({message:"User doesn't exist"});
-        const posts = await Post.find({author:id}).sort({createdAt:-1}).lean();
+        const posts = await Post.find({author:id}).sort({createdAt:-1}).populate("author", "name avatar").lean();
         const postsWithLiked = posts.map((post)=>{
             return {...post,liked: req.user ? post.likes.some((id)=>id.toString()===req.user.id) : false}
         })
