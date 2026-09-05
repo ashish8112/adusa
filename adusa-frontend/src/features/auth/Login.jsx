@@ -10,6 +10,7 @@ export default function Login(){
     })
     const [searchParams] = useSearchParams();
     const expired = searchParams.get("expired") //return null in default 
+    const redirected = searchParams.get("redirected")
     const navigate = useNavigate();
     const {login} = useAuth();
     async function handleSubmit(e) {
@@ -32,6 +33,7 @@ export default function Login(){
         <div className=" bg-bg text-text flex items-center justify-center">
             <main className="py-6 px-4  w-full flex flex-col ">
                 {expired && <p className="text-error text-sm text-center mb-2">Session Expired. Please Login Again</p>}
+                {redirected && <p className="text-text text-sm text-center mb-2">Please Login First</p>}
                 <div className="rounded-xl mx-auto max-w-70 md:max-w-100 w-full bg-surface border border-border">
                     <header className="flex flex-col px-4 py-6 space-y-0.5">
                         <h2 className=" font-medium text-text text-base md:text-xl">Sign in</h2>

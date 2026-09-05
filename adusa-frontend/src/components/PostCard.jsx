@@ -3,15 +3,18 @@ import { timeAgo } from "../utils/timeAgo"
 import API from "../api/axios"
 import { useAuth } from "../features/auth/AuthProvider"
 import { useState, useRef} from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function PostCard({post,updatePost}){
 
     const {user}= useAuth();
     const [submitting, setSubmitting] = useState(false);
     const submittingRef = useRef(false);
-
+    const navigate = useNavigate();
 
     async function toggleLike(){
+        if(!user)
+            return navigate("/login?redirected=true");
 
         if(submittingRef.current)
             return;
@@ -55,14 +58,12 @@ export default function PostCard({post,updatePost}){
 return(
     <section className="bg-surface border border-border rounded-xl text-text overflow-hidden ">
         <header className="flex items-center gap-2 px-4 py-4">
-            {post?.author?.avatar?<img className="h-10 w-10 rounded-full border border-border object-cover" src={post.author.avatar} alt={post.author.name}/> :
-            <p className="text-base font-medium h-10 w-10 rounded-full border  border-border flex justify-center items-center">{getInitials(post.author?.name)}</p>}
-            <p className="text-base font-medium"> 
-            {post.author?.name}
-            </p>
-            <p className="text-muted text-xs before:content-['.'] before:mr-1">
-            {timeAgo(post.createdAt)}
-            </p>
+            <Link to={`/profile/${post?.author?._id}`} className="flex items-center gap-2">
+                {post?.author?.avatar?<img className="h-10 w-10 rounded-full border border-border object-cover" src={post.author.avatar} alt={post.author.name} /> :
+                <p className="text-base font-medium h-10 w-10 rounded-full border  border-border flex justify-center items-center">{getInitials(post.author?.name)}</p>}
+                <p className="text-base font-medium"> {post.author?.name} </p>
+            </Link>
+            <p className="text-muted text-xs before:content-['.'] before:mr-1">{timeAgo(post.createdAt)}</p>
         </header>
         <article className=" px-4 pt-1 pb-4 ">
             <p className="text-base leading-relaxed ">{post.content}</p>
