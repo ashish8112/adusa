@@ -18,7 +18,7 @@ export default function Navbar(){
                 <>
                 <li>
                     <Link to={`/profile/${user.id}`}>
-                        <p className="h-10 w-10 rounded-full border border-border flex items-center justify-center text-base">{getInitials(user.name)}</p>
+                        <p className="h-10 w-10 rounded-full border border-border flex items-center justify-center text-base hover:border-text">{getInitials(user.name)}</p>
                     </Link>
                 </li>
                <li><Button variant="primary" onClick={()=>logout()}>Logout</Button></li>
