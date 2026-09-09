@@ -40,7 +40,7 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
     }
     function handleOpen(){
         if(!user)
-            return navigate("/login");
+            return navigate("/login?redirected=true");
         setIsOpen(true);
     }
     return(
