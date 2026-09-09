@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import API from "../../api/axios"
 import Button from "../../components/Button";
 import { useAuth } from "../auth/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link} from "react-router-dom";
 import { getInitials } from "../../utils/getInitials";
 export default function CreatePost({onPostCreate}){ //This will be protected Route
     const [isOpen , setIsOpen]=useState(false);
@@ -46,7 +46,8 @@ export default function CreatePost({onPostCreate}){ //This will be protected Rou
     return(
         <div >
         <div className="flex items-center justify-center gap-2 text-text p-4">
-        {user&&<p className="h-14 w-14 rounded-full border border-border flex shrink-0 items-center justify-center self-start">{getInitials(user.name)}</p>}
+        {user&&
+        <Link to={`/profile/${user.id}`}><p className="h-14 w-14 rounded-full border border-border flex shrink-0 items-center justify-center self-start">{getInitials(user.name)}</p></Link>}
         <input type="text" value ="Create a post" className="text-text text-lg outline-none bg-surface border border-border rounded-full p-3  w-full cursor-pointer hover:border-muted" onClick={handleOpen}  readOnly/>
         </div>
         {isOpen&&(
