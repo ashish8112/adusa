@@ -36,8 +36,17 @@ export default function AuthProvider({children})
         setUser(null);
         //to disconnect socket
     }
+
+    function updateUser(updatedUser){
+        setUser(updatedUser);
+        localStorage.setItem(
+            "adusaUser",
+            JSON.stringify(updatedUser)
+        )
+    }
+
     return (
-        <AuthContext.Provider value={{user,login,register,logout}}>
+        <AuthContext.Provider value={{user,login,register,logout,updateUser}}>
         {children}
         </AuthContext.Provider>
     )
