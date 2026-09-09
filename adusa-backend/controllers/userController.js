@@ -22,7 +22,7 @@ const getProfileById = async (req,res)=>{
 const updateUserById = async(req,res)=>{
     try{
         const id = req.user.id;
-        const allowed = ["bio","college","avatar"];
+        const allowed = ["name","bio","college","avatar"];
         const updates = {};
 
         allowed.forEach((key)=>{
