@@ -151,3 +151,21 @@ adding more client checks - a client check can always be tampered.
 
 Rule: client side checks are for UI, server side checks are for
 security. Never confuse the two.
+
+11. Security check - can a user edit someone else's profile? (IDOR - Insecure Direct Object Reference.)
+
+Test: copied another user's id from the URL, edited localStorage
+adusaUser.id to that id, refreshed. Edit Profile button appeared on
+their profile and the form opened.
+
+Result: NO data breach. My own profile got updated, not theirs.
+
+Why: PUT /api/users/update takes the id from req.user.id, which
+verifyToken reads from the signed JWT. It never reads an id from the
+URL, the body, or localStorage. Changing localStorage changes what the
+UI shows, not who the server thinks I am.
+
+Remaining issue is UI only: isOwnProfile is computed from localStorage
+user.id vs the URL id, so a tampered localStorage shows the button on
+someone else's profile. Harmless but misleading. Not fixing it by
+adding more client checks - a client check can always be tampered.
