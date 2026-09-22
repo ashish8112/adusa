@@ -69,7 +69,7 @@ return(
             <p className="text-base leading-relaxed ">{post.content}</p>
         </article>
         <footer className="px-4 py-4 border-border border-t">
-             <button disabled={submitting} className={`flex items-center gap-2 transition-colors duration-200 ${post?.liked ? "text-like" : "text-muted hover:text-text"} ${submitting ? "opacity-50 cursor-not-allowed" : " cursor-pointer"}`}  onClick={toggleLike}>
+             <button  className={`flex items-center gap-2 transition-colors duration-200 ${post?.liked ? "text-like" : "text-muted hover:text-text"} ${submitting ? "opacity-50 cursor-not-allowed" : " cursor-pointer"}`}  onClick={toggleLike}>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
                     fill={post?.liked ? "currentColor" : "none"}
